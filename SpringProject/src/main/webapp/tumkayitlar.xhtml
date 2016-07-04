@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+    <title>Tüm Kayıtlar</title>
+</h:head>
+<h:body style="background-color: cornflowerblue">
+    <h:form id="liste" >
+        <p:growl id="growl" life="2000" />
+        <p:commandButton value="Ana Sayfa" id="iptal" update="growl" actionListener="#{redirectPage.goToIndexPage}"
+                         styleClass="ui-priority-primary" />
+        <p:commandButton value="Yeni bir kayıt ekle" id="ekle" update="growl"
+                         actionListener="#{redirectPage.goToEklePage}" styleClass="ui-priority-primary" />
+        <br/>
+        <br/>
+        <c:if test="${!empty personelService.personelAra()}">
+            <p:dataTable value="${personelService.personelAra()}" var="per">
+                <p:column headerText="ID">
+                    <center>
+                        <h:outputText value="#{per.id}" />
+                    </center>
+                </p:column>
+                <p:column headerText="ADI">
+                    <h:outputText value="#{per.adi}" />
+                </p:column>
+                <p:column headerText="SOYADI">
+                    <h:outputText value="#{per.soyadi}" />
+                </p:column>
+                <p:column headerText="CİNSİYET">
+                    <h:outputText value="#{per.cinsiyeti.equals('1') ? 'Kadın' : 'Erkek'}" />
+                </p:column>
+                <p:column headerText="E-POSTA">
+                    <h:outputText value="#{per.eposta}" />
+                </p:column>
+                <p:column headerText="NUMARA">
+                    <h:outputText value="#{per.numarasi}" />
+                </p:column>
+                <p:column headerText="PAROLA">
+                    <h:outputText value="#{per.parolasi}" />
+                </p:column>
+                <p:column headerText="İŞLEM">
+                    <p:growl id="growl2" life="2000" />
+                    <p:commandButton value="Güncelle" id="guncelle" update="growl2"
+                                     actionListener="#{redirectPage.goToDuzenlePage}"
+                                     styleClass="ui-priority-primary" />
+                    <p:commandButton value="Sil" id="sil" update="growl2"
+                                     action="#{personelService.personelSil(per)}"
+                                     styleClass="ui-priority-primary"
+                                     onclick="return confirm('Emin misiniz')" />
+                </p:column>
+            </p:dataTable>
+        </c:if>
+    </h:form>
+</h:body>
+
+</html>

@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:rich="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Güncelleme</title>
+</h:head>
+<h:body style="background-color: cornflowerblue">
+    <h:form style="margin-top: 10%;">
+        <center>
+            <p:panelGrid style="width:571px;">
+                <p:panelGrid id="panel" columns="2" border="0">
+
+                    <f:facet name="header">
+                        <h:outputText value="PERSONEL GÜNCELLE" />
+                    </f:facet>
+
+                    <h:outputLabel value="Id : " for="id" />
+                    <h:inputText value="#{personel.id}" id="id" />
+
+                    <h:outputLabel value="Numarası : " for="numarasi" />
+                    <h:inputText value="#{personel.numarasi}" id="numarasi" />
+
+                    <h:outputLabel value="Adı : " for="adi" />
+                    <h:inputText value="#{personel.adi}" id="adi" />
+
+                    <h:outputLabel value="Soyadı : " for="soyadi" />
+                    <h:inputText value="#{personel.soyadi}" id="soyadi" />
+
+                    <h:outputText value="Cinsiyeti : " />
+                    <h:selectOneRadio value="#{personel.cinsiyeti}" id="cinsiyeti" layout="lineDirection">
+                        <f:selectItem id="kadin" itemValue="1" itemLabel="Kadın"/>
+                        <f:selectItem id="erkek" itemValue="2" itemLabel="Erkek"/>
+                    </h:selectOneRadio>
+
+                    <h:outputLabel value="E-Posta : " for="eposta" />
+                    <h:inputText value="#{personel.eposta}" id="eposta" />
+
+                    <h:outputLabel value="Parolası : " for="parolasi" />
+                    <h:inputText value="#{personel.parolasi}" id="parolasi" />
+
+                    <h:outputLabel />
+                    <h:panelGroup>
+                        <p:growl id="growl" life="2000" />
+                        <p:commandButton value="Ana Sayfa" id="iptal" update="growl" actionListener="#{redirectPage.goToIndexPage}"
+                                         styleClass="ui-priority-primary" />
+                        <p:commandButton action="#{redirectPage.goToEditPage(personel)}" value="Güncelle" />
+                    </h:panelGroup>
+
+                </p:panelGrid>
+            </p:panelGrid>
+        </center>
+    </h:form>
+</h:body>
+
+</html>

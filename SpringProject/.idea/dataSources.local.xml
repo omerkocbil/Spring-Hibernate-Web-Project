@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - firmaveritabani@localhost" uuid="c0b927b1-b418-403e-aaa2-300a63622bca">
+      <secret-storage>master_key</secret-storage>
+      <user-name>katerina</user-name>
+      <schema-pattern>firmaveritabani.*</schema-pattern>
+      <default-schemas>firmaveritabani.*</default-schemas>
+    </data-source>
+  </component>
+</project>
